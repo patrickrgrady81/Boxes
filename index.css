@@ -1,0 +1,46 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.parent {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+}
+
+nav, main, footer {
+  border: 3px solid red;
+  border-radius: 1rem;
+}
+
+nav {
+  height: 10vh;
+}
+
+main {
+  height: 80vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.canvas {
+  width: 65vw;
+  height: 65vh;
+  border: 3px solid cornflowerblue;
+  border-radius: 1rem;
+}
+
+.options {
+  width: 25vw;
+  height: 65vh;
+  border: 3px solid gold;
+  border-radius: 1rem;
+}
+
+footer {
+  height: 10vh;
+}
