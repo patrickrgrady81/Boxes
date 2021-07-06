@@ -16,4 +16,18 @@ export default class Box {
         this.ctx.strokeStyle = color;
         this.ctx.strokeRect(this.x, this.y, this.width, this.height);
     }
+
+    drawBox = () => {
+        this.drawOutline();
+        this.drawText();
+        this.drawClose();
+    }
+
+    drawText = () => {
+        console.log("drawing text...");
+    }
+
+    drawClose = () => {
+        console.log("draw close...");
+    }
 }
