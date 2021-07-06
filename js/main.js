@@ -1,31 +1,52 @@
 import Canvas from './Canvas.js';
 import Grid from './Grid.js';
 
+const createDropDown = (type)=>{
+    for (let i = 1; i <= 20; i++){
+        let option = document.createElement("option");
+        option.text = i.toString();
+        option.value = i;
+        if (i === 3) option.selected = true;
+        type.appendChild(option);
+    }
+
+}
+
 const start = () => {
         
     let [ctx, display] = new Canvas().create();
 
-    let rows = document.querySelector('#rows').value;
-    let cols = document.querySelector('#columns').value;
+    let rowsElement = document.querySelector('#rows');
+    let colsElement = document.querySelector('#columns');
+    let auto = document.querySelector('#auto');
+
+    createDropDown(rowsElement);
+    createDropDown(colsElement);
+    
+    let rows = parseInt(rowsElement.value);
+    let cols = parseInt(colsElement.value);
 
     let xGrid = new Grid(ctx, display, rows, cols).create();
-    // console.log(xGrid);
 
     // handle input onChanges
     const handleColChange = (e) => {
         e.preventDefault();
-        // console.log(e.target.value);
-        // console.log(xGrid);
-        rows = e.target.value;
+        cols = e.target.value;
+        if (auto.checked) {
+            xGrid = new Grid(ctx, display, rows, cols).create(); 
         }
+    }
 
     let colChange = document.querySelector('#columns');
     colChange.addEventListener('change', handleColChange)
 
     const handleRowChange = (e) => {
         e.preventDefault();
-        // console.log(e.target.value);
-        cols = e.target.value;   
+        rows = e.target.value;   
+        if (auto.checked) {
+            xGrid = new Grid(ctx, display, rows, cols).create(); 
+        }
+
     }
 
     let rowChange = document.querySelector('#rows');
@@ -42,6 +63,7 @@ const start = () => {
 
     const addClicked = (e) => {
         e.preventDefault();
+        console.log(xGrid);
         xGrid.addBox();
     }
 

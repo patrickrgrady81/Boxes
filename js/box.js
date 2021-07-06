@@ -19,6 +19,7 @@ export default class Box {
     }
 
     drawBox = () => {
+        console.log('drawing box ' + this);
         this.drawOutline();
         this.drawText();
         this.drawClose();
@@ -30,13 +31,5 @@ export default class Box {
 
     drawClose = () => {
         // console.log("draw close...");
-    }
-
-    addBox = () => {
-        console.log('adding a box...');
-    }
-
-    removeBox = () => {
-        console.log('removing box...');
     }
 }
