@@ -1,30 +1,52 @@
-import Canvas from './Canvas.js'
-import Box from './Box.js'
+import Canvas from './Canvas.js';
+import Grid from './Grid.js';
 
-let [ctx, display] = new Canvas().create();
+const start = () => {
+        
+    let [ctx, display] = new Canvas().create();
 
-// get how many boxes I will need
-let width = display.width;
-let height = display.height;
-let margin = 10;
-let rows = 3;
-let cols = 5;
-let rowBoxWidth = Math.floor((width / cols) - (margin * 2));
-let colBoxHeight = Math.floor((height / rows) - (margin * 2));
-let carryover = 1;
-let startX = margin;
-let startY = margin;
-let box;
+    let rows = document.querySelector('#rows').value;
+    let cols = document.querySelector('#columns').value;
 
+    let xGrid = new Grid(ctx, display, rows, cols).create();
+    // console.log(xGrid);
 
-// create grid of boxes based on input
-let grid = new Array(rows).fill(0).map(()=> new Array(cols).fill(0));
+    // handle input onChanges
+    const handleColChange = (e) => {
+        e.preventDefault();
+        // console.log(e.target.value);
+        // console.log(xGrid);
+        rows = e.target.value;
+        }
 
-for (let i = 0; i < rows; i++){
-    for (let j = 0; j < cols; j++){
-        box = new Box(ctx, startX, startY, rowBoxWidth, colBoxHeight).drawBox();
-        startX += rowBoxWidth;
+    let colChange = document.querySelector('#columns');
+    colChange.addEventListener('change', handleColChange)
+
+    const handleRowChange = (e) => {
+        e.preventDefault();
+        // console.log(e.target.value);
+        cols = e.target.value;   
     }
-    startX = margin;
-    startY += colBoxHeight;
+
+    let rowChange = document.querySelector('#rows');
+    rowChange.addEventListener('change', handleRowChange)
+
+    // handle clicks
+    const createClicked = (e) => {
+        e.preventDefault();
+        xGrid = new Grid(ctx, display, rows, cols).create(); 
+    }
+
+    let createButton = document.querySelector('#createButton');
+    createButton.addEventListener('click', createClicked)
+
+    const addClicked = (e) => {
+        e.preventDefault();
+        xGrid.addBox();
+    }
+
+    let addButton = document.querySelector('#addButton');
+    addButton.addEventListener('click', addClicked);
 }
+
+window.onload = start();

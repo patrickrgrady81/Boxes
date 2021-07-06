@@ -49,3 +49,10 @@ footer {
   display: flex;
   justify-content: center;
 }
+
+#myForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}

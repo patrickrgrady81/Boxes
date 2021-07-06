@@ -1,10 +1,11 @@
 export default class Box {
-    constructor(ctx, x, y, width, height) {
+    constructor(ctx, index, x, y, width, height) {
         this.ctx = ctx;
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
+        this.index = index;
     }
 
     drawFilled = (color = "00ff00") => {
@@ -24,10 +25,18 @@ export default class Box {
     }
 
     drawText = () => {
-        console.log("drawing text...");
+        // console.log("drawing text...");
     }
 
     drawClose = () => {
-        console.log("draw close...");
+        // console.log("draw close...");
+    }
+
+    addBox = () => {
+        console.log('adding a box...');
+    }
+
+    removeBox = () => {
+        console.log('removing box...');
     }
 }
