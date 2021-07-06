@@ -44,3 +44,18 @@ main {
 footer {
   height: 10vh;
 }
+
+
+/* @media only screen and (max-width: 600px) {
+  .parent {
+    align-items: center;
+  }
+
+  main {
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+} */

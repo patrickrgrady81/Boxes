@@ -1,4 +1,4 @@
-class Canvas {
+export default class Canvas {
     constructor () {
         this.display = document.getElementsByClassName("canvas")[0];
     }

@@ -1,4 +1,4 @@
-class Box {
+export default class Box {
     constructor(ctx, x, y, width, height) {
         this.ctx = ctx;
         this.x = x;
