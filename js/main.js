@@ -16,6 +16,10 @@ const start = () => {
         
     let [ctx, display] = new Canvas().create();
 
+    display.addEventListener('click', (e) => {
+        console.log(e.offsetX, e.offsetY);
+    });
+
     let rowsElement = document.querySelector('#rows');
     let colsElement = document.querySelector('#columns');
     let auto = document.querySelector('#auto');
@@ -33,6 +37,7 @@ const start = () => {
     // handle input onChanges
     const handleColChange = (e) => {
         e.preventDefault();
+        let rows = parseInt(rowsElement.value);
         let cols = parseInt(colsElement.value);
         if (auto.checked) {
             xGrid = new Grid(ctx, display, rows, cols).create();
@@ -46,6 +51,7 @@ const start = () => {
     const handleRowChange = (e) => {
         e.preventDefault();
         let rows = parseInt(rowsElement.value);
+        let cols = parseInt(colsElement.value);
         if (auto.checked) {
             xGrid = new Grid(ctx, display, rows, cols).create();
             xGrid.draw(); 

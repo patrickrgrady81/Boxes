@@ -1,12 +1,14 @@
 export default class Box {
     constructor(ctx, index, x, y, width, height) {
-        // debugger;
         this.ctx = ctx;
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
         this.index = index;
+        this.textFont = `${width / 8}px serif`;
+        this.closeFont = `${width / 10}px serif`;
+        this.midpoint = [Math.floor(this.width / 2), Math.floor(this.height / 2)];
     }
 
     drawFilled = (color = "00ff00") => {
@@ -20,17 +22,20 @@ export default class Box {
     }
 
     drawBox = () => {
-        console.log('drawing box ' + this);
         this.drawOutline();
         this.drawText();
         this.drawClose();
     }
 
     drawText = () => {
-        // console.log("drawing text...");
+        this.ctx.font = this.textFont;
+        this.ctx.fillText(`item ${this.index + 1}`, this.midpoint[0]+this.x - this.midpoint[0]/3 , this.midpoint[1] + this.y + this.midpoint[1]/6);
     }
 
     drawClose = () => {
-        // console.log("draw close...");
+        this.ctx.font = this.closeFont;
+        // console.log(Math.floor(this.width), Math.floor(this.y), Math.floor(this.x));
+        // this.ctx.fillText('x', (this.midpoint[0]), this.y); 
+        // console.log('x', this.y + this.height); 
     }
 }

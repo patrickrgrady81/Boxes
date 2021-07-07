@@ -15,14 +15,16 @@
             <div class="options">
                 <form id='myForm'>
                     <label form="myForm">OPTIONS</label>
-                    <input type="checkbox" id="auto" name="auto">
-                    <label for="auto">Auto Generate Grid When Dimensions Change</label>
+                    <div class="check">
+                        <input type="checkbox" id="auto" name="auto">
+                        <label for="auto" class="add-margin-bottom">Auto Generate Grid When Dimensions Change</label>
+                    </div>
                     <label for="rows">ROWS</label>
                     <select id="rows"></select>
                     <label for="columns">COLUMNS</label>
                     <select id="columns"></select>
                     <button id="createButton">Create Grid</button>
-                    <button id="addButton">Add Box</button>
+                    <button id="addButton" disabled>Add Box</button>
                 </form>
             </div>
         </main>

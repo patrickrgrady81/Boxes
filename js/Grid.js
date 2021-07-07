@@ -14,15 +14,13 @@ export default class Grid {
         this.height = this.display.clientHeight;
         this.rowBoxWidth = 0;
         this.colBoxHeight = 0;
-
+        this.carryover = 1;
     }
 
     // get how many boxes I will need
-    create = () => {        
-        // debugger;
+    create = () => {
         this.recalculate()
         this.ctx.clearRect(0, 0, this.display.width, this.display.height);
-        let carryover = 1;
         let index = 0;
         let i;
 
@@ -36,7 +34,8 @@ export default class Grid {
                 }
                 this.startX = this.margin;
                 this.startY += this.colBoxHeight
-            }
+            }         
+
         return this;
     }
 
@@ -54,7 +53,8 @@ export default class Grid {
             this.carryOver %= this.cols;
             this.rows++;
         }
-        this.create();
+        this.create();  
+        this.draw();
     }
 
     removeBox = () => {
@@ -63,7 +63,6 @@ export default class Grid {
 
     recalculate = () => {
         this.rowBoxWidth = ((this.width - 10) / this.cols);
-        debugger;
         this.colBoxHeight = ((this.height + 80) / this.rows);
     }
 }

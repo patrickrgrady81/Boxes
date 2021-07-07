@@ -11,7 +11,7 @@
     height: 100vh;
 }
 
-nav, main, footer {
+nav, footer {
   border: 3px solid red;
   border-radius: 1rem;
 }
@@ -25,6 +25,7 @@ main {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  background-color: rgb(197, 217, 255);
 }
 
 .canvas {
@@ -36,10 +37,16 @@ main {
 }
 
 .options {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
   width: 25vw;
   height: 65vh;
   border: 3px solid gold;
   border-radius: 1rem;
+  padding-bottom: 1rem;
+  background-color: rgb(255, 247, 200);;
 }
 
 footer {
@@ -52,8 +59,33 @@ footer {
 }
 
 #myForm {
+  margin: 1rem 1rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
+  /* height: 50vh; */
+}
+
+input[type='select'], button {
+  margin: 1rem;
+  padding: 1rem;
+}
+
+label:nth-child(1){
+  margin-bottom: 2rem;
+  text-align: center;
+  text-decoration: underline;
+}
+
+.add-margin-bottom {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.check {
+  display: flex;
+  flex-direction: row;
+}
+
+nav, footer {
+  background-color: rgb(204, 204, 204);
 }
