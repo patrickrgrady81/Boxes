@@ -10,7 +10,7 @@ export default class Grid {
         this.margin = 10;
         this.startX = 10;
         this.startY = 10;
-        this.width = this.display.clientWidth;
+        this.width = this.display.width;
         this.height = this.display.clientHeight;
         this.rowBoxWidth = 0;
         this.colBoxHeight = 0;
@@ -62,7 +62,8 @@ export default class Grid {
     }
 
     recalculate = () => {
-        this.rowBoxWidth = this.width / this.cols - this.cols - this.margin;
-        this.colBoxHeight = this.height / this.rows - this.rows - this.margin;
+        this.rowBoxWidth = ((this.width - 10) / this.cols);
+        debugger;
+        this.colBoxHeight = ((this.height + 80) / this.rows);
     }
 }

@@ -33,8 +33,6 @@ const start = () => {
     // handle input onChanges
     const handleColChange = (e) => {
         e.preventDefault();
-        e.preventDefault();
-        let rows = parseInt(rowsElement.value);
         let cols = parseInt(colsElement.value);
         if (auto.checked) {
             xGrid = new Grid(ctx, display, rows, cols).create();
@@ -48,7 +46,6 @@ const start = () => {
     const handleRowChange = (e) => {
         e.preventDefault();
         let rows = parseInt(rowsElement.value);
-        let cols = parseInt(colsElement.value);
         if (auto.checked) {
             xGrid = new Grid(ctx, display, rows, cols).create();
             xGrid.draw(); 
