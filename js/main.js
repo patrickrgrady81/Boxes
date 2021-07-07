@@ -28,12 +28,17 @@ const start = () => {
 
     let xGrid = new Grid(ctx, display, rows, cols).create();
 
+    xGrid.draw();
+
     // handle input onChanges
     const handleColChange = (e) => {
         e.preventDefault();
-        cols = e.target.value;
+        e.preventDefault();
+        let rows = parseInt(rowsElement.value);
+        let cols = parseInt(colsElement.value);
         if (auto.checked) {
-            xGrid = new Grid(ctx, display, rows, cols).create(); 
+            xGrid = new Grid(ctx, display, rows, cols).create();
+            xGrid.draw(); 
         }
     }
 
@@ -42,11 +47,12 @@ const start = () => {
 
     const handleRowChange = (e) => {
         e.preventDefault();
-        rows = e.target.value;   
+        let rows = parseInt(rowsElement.value);
+        let cols = parseInt(colsElement.value);
         if (auto.checked) {
-            xGrid = new Grid(ctx, display, rows, cols).create(); 
+            xGrid = new Grid(ctx, display, rows, cols).create();
+            xGrid.draw(); 
         }
-
     }
 
     let rowChange = document.querySelector('#rows');
@@ -55,7 +61,10 @@ const start = () => {
     // handle clicks
     const createClicked = (e) => {
         e.preventDefault();
+        let rows = parseInt(rowsElement.value);
+        let cols = parseInt(colsElement.value);
         xGrid = new Grid(ctx, display, rows, cols).create(); 
+        xGrid.draw();
     }
 
     let createButton = document.querySelector('#createButton');
