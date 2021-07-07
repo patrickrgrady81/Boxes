@@ -2,47 +2,51 @@ import Box from './Box.js';
 
 export default class Grid {
     constructor(ctx, display, rows, cols) {
+        // debugger;
         this.display = display;
         this.ctx = ctx;
         this.rows = rows;
         this.cols = cols;
+        this.grid = [];
+        this.margin = 10;
+        this.startX = 10;
+        this.startY = 10;
+        this.width = this.display.clientWidth;
+        this.height = this.display.clientHeight;
+        this.rowBoxWidth = 0;
+        this.colBoxHeight = 0;
+
     }
 
     // get how many boxes I will need
-    create = () => {
-        console.log('creating new grid...');
+    create = () => {        
+        // debugger;
+        this.recalculate()
         this.ctx.clearRect(0, 0, this.display.width, this.display.height);
-        let width = this.display.width;
-        let height = this.display.height;
-        let margin = 10;
-        // console.log(this.rows, this.cols);
-        let rowBoxWidth = Math.floor(width / this.cols) - this.cols - 10;
-        let colBoxHeight = Math.floor(height / this.rows) - this.rows - 10;
         let carryover = 1;
-        let startX = margin;
-        let startY = margin;
-        let box;
         let index = 0;
+        let i;
 
-
-        // create grid of boxes based on input
-        let grid = new Array(this.rows).fill(0).map(()=> new Array(this.cols).fill(0));
-
-        for (let i = 0; i < this.rows; i++){
-            for (let j = 0; j < this.cols; j++){
-                box = new Box(this.ctx, index, startX, startY, rowBoxWidth, colBoxHeight).drawBox();
-                if (box){
-                    box.addEventListener('click', (e) => {
-                        console.log(e.target + 'clicked...');
-                    });
+            for(i = 0; i < this.rows; i++) {
+                this.grid[i] = [];
+                for(let j = 0; j < this.cols; j++) {
+                    let box = new Box(this.ctx, index, this.startX, this.startY, this.rowBoxWidth, this.colBoxHeight);
+                    this.grid[i][j] = box;
+                    index++;
+                    this.startX += this.rowBoxWidth;
                 }
-                index++;
-                startX += rowBoxWidth;
+                this.startX = this.margin;
+                this.startY += this.colBoxHeight
             }
-            startX = margin;
-            startY += colBoxHeight;
-        }
         return this;
+    }
+
+    draw = () => {
+        for(let i = 0; i < this.rows; i++) {
+            for(let j = 0; j < this.cols; j++) {
+                this.grid[i][j].drawBox();
+            }
+        }
     }
 
     addBox = () => {
@@ -51,5 +55,10 @@ export default class Grid {
 
     removeBox = () => {
         console.log('removing box...');
+    }
+
+    recalculate = () => {
+        this.rowBoxWidth = this.width / this.cols - this.cols - this.margin;
+        this.colBoxHeight = this.height / this.rows - this.rows - this.margin;
     }
 }

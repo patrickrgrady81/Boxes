@@ -1,5 +1,6 @@
 export default class Box {
     constructor(ctx, index, x, y, width, height) {
+        // debugger;
         this.ctx = ctx;
         this.x = x;
         this.y = y;
